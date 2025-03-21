@@ -25,7 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants-divider"></div>
+          <p><strong>Participants:</strong></p>
         `;
+
+        if (details.participants.length > 0) {
+          details.participants.forEach((participant) => {
+            const participantBubble = document.createElement("span");
+            participantBubble.className = "participant-bubble";
+            participantBubble.textContent = participant;
+            activityCard.appendChild(participantBubble);
+          });
+        } else {
+          const noParticipants = document.createElement("p");
+          noParticipants.textContent = "No participants yet";
+          activityCard.appendChild(noParticipants);
+        }
 
         activitiesList.appendChild(activityCard);
 
